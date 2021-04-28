@@ -48,7 +48,12 @@ const Register: React.FC = () => {
   ) => {
     e.preventDefault();
 
-    await axiosInstance.post('/api/register.php/', registerDetails);
+    await axiosInstance.post('/register.php/', registerDetails).catch((err) => {
+      console.log(err);
+      return;
+    });
+
+    history.push('/login');
   };
 
   const isDisabled =
